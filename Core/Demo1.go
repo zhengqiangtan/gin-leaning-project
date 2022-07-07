@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"unsafe"
+)
 
 /**
 组合用例，在定义的cat 中使用Animal结构体
@@ -53,4 +56,13 @@ func main() {
 	}
 	lion.Run()
 	fmt.Println(lion.Color)
+
+	// 查看结构体占了多少内存
+	size := unsafe.Sizeof(Animal{})
+	fmt.Println(size) // 48
+
+	// 对象调用测试
+	animal := &Animal{Name: "旺财", Age: 8, Color: "黄色"}
+	fmt.Println(animal) //&{旺财 黄色 0 0 8}
+
 }
