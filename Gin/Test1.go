@@ -93,6 +93,7 @@ func main() {
 		v2.GET("/series", defaultHandler)
 	}
 
+	gin.SetMode("debug")
 	r.Run(":9999")
 
 }
