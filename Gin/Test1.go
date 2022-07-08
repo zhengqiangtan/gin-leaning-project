@@ -2,7 +2,9 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
+	"io"
 	"net/http"
+	"os"
 )
 
 /**
@@ -93,7 +95,15 @@ func main() {
 		v2.GET("/series", defaultHandler)
 	}
 
+	//自定义日志文件:写入文件
+	f, _ := os.Create("gin.log")
+	gin.DefaultWriter = io.MultiWriter(f)
+
+	// 如果需要同时将日志写入文件和控制台，请使用以下代码。
+	// gin.DefaultWriter = io.MultiWriter(f, os.Stdout)
+
 	gin.SetMode("debug")
+	gin.DisableConsoleColor()
 	r.Run(":9999")
 
 }
