@@ -14,3 +14,4 @@
 https://go-zero.dev/cn/docs/develop/dev-specification
 
 ## Go问题记录
+#### 1. Go print()或者println()打印内容出现位置很随机, why?

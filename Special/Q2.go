@@ -100,6 +100,53 @@ func case8() {
 	}
 }
 
+// 返回参数是匿名
+func increaseA() int {
+	var i int
+	defer func() {
+		i++
+	}()
+	return i
+}
+
+//返回参数是具名
+func increaseB() (r int) {
+	defer func() {
+		r++
+	}()
+	return r
+}
+func case9() {
+	fmt.Println(increaseA()) // 0
+	fmt.Println(increaseB()) // 1
+}
+
+type A interface {
+	ShowA() int
+}
+
+type B interface {
+	ShowB() int
+}
+
+type Work struct {
+	i int
+}
+
+func (w Work) ShowA() int {
+	return w.i + 10
+}
+
+func (w Work) ShowB() int {
+	return w.i + 20
+}
+func case10() {
+	var a A = Work{3}
+	s := a.(Work)
+	fmt.Println(s.ShowA()) // 13
+	fmt.Println(s.ShowB()) // 23
+}
+
 func main() {
 
 	//case1() //返回值问题
@@ -109,6 +156,8 @@ func main() {
 	//case5() //defer问题
 	//case6() // 指针问题 自增
 	//case7() // 可变函数问题 同case2
-	case8() // nil 切片和空切片
+	//case8() // nil 切片和空切片
+	case9()  // 具名和匿名函数问题 todo
+	case10() // 类型断言,Work实现了接口类型A ，调用自个的SHowA方法
 
 }
