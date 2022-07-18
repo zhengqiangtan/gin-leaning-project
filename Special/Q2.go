@@ -145,6 +145,48 @@ func case10() {
 	s := a.(Work)
 	fmt.Println(s.ShowA()) // 13
 	fmt.Println(s.ShowB()) // 23
+
+	//第二种情况
+	c := Work{2}
+	var t A = c            //t 的静态类型是 A
+	fmt.Println(t.ShowA()) // 调用接口A的showA方法
+}
+func case11() {
+	s := [3]int{1, 2, 3}
+	a := s[:0]         //0-0,3-0
+	b := s[:2]         //2-0,3-0
+	c := s[1:2:cap(s)] //2-1,3-1
+	fmt.Println(a, b, c)
+	// 问：a,b,c的长度和容量分别是多少？
+	// 答： 0 3、2 3、1 2
+}
+
+type Person struct {
+	age int
+}
+
+func case12() {
+	person := &Person{28}
+
+	// 1.
+	defer fmt.Println(person.age)
+	// person.age 这一行代码跟之前含义是一样的，此时是将 28 当做 defer 函数的参数，会把 28 缓存在栈中，等到最后执行该 defer 语句的时候取出，即输出 28
+
+	// 2.
+	defer func(p *Person) {
+		fmt.Println(p.age) // defer 缓存的是结构体 Person{28} 的地址，这个地址指向的结构体没有被改变，最后 defer 语句后面的函数执行的时候取出仍是 28；
+	}(person)
+
+	// 3.
+	defer func() {
+		fmt.Println(person.age) // 闭包引用，person 的值已经被改变，指向结构体 Person{29}
+	}()
+
+	person = &Person{29} //修改引用对象本身
+	// out： 执行顺序为 3,2，1  =》 29 28 28
+
+	//person = 29 //修改引用对象的成员 age
+	// out： 执行顺序为 3,2，1  =》 29 29 28
 }
 
 func main() {
@@ -157,7 +199,9 @@ func main() {
 	//case6() // 指针问题 自增
 	//case7() // 可变函数问题 同case2
 	//case8() // nil 切片和空切片
-	case9()  // 具名和匿名函数问题 todo
-	case10() // 类型断言,Work实现了接口类型A ，调用自个的SHowA方法
+	//case9()  // 具名和匿名函数问题 todo
+	//case10() // 类型断言,Work实现了接口类型A ，调用自个的SHowA方法
+	//case11() // 切片类型长度和容量换算
+	case12() // 闭包测试&defer
 
 }
