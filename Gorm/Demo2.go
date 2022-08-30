@@ -29,6 +29,7 @@ func main() {
 		v1.POST("/", createTodo)
 		v1.GET("/", fetchAllTodo)
 		v1.GET("/:id", fetchSingleTodo)
+		v1.GET("/raw/:id", rawSqlGetOne)
 		v1.PUT("/:id", updateTodo)
 		v1.DELETE("/:id", deleteTodo)
 	}
@@ -86,7 +87,7 @@ func fetchAllTodo(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"status": http.StatusOK, "data": _todos})
 }
 
-// fetchSingleTodo方法返回一条 todo 数据
+// fetchSingleTodo方法返回一条
 func fetchSingleTodo(c *gin.Context) {
 	var todo todoModel
 	todoID := c.Param("id")
@@ -109,7 +110,7 @@ func fetchSingleTodo(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"status": http.StatusOK, "data": _todo})
 }
 
-// updateTodo 方法 更新 todo 数据
+// updateTodo 方法 更新
 func updateTodo(c *gin.Context) {
 	var todo todoModel
 	todoID := c.Param("id")
@@ -142,4 +143,16 @@ func deleteTodo(c *gin.Context) {
 
 	db.Delete(&todo)
 	c.JSON(http.StatusOK, gin.H{"status": http.StatusOK, "message": "Todo deleted successfully!"})
+}
+
+func rawSqlGetOne(c *gin.Context) {
+	var todo todoModel
+	todoID := c.Param("id")
+	db.Raw("select *from todo_models where id=? ", todoID).Scan(&todo)
+	//db.Exec("select * from todo_models where id= ? ", todoID) // 不能用于查询，可用于更新比如drop update等带有表达式的操作
+	if todo.ID == 0 {
+		c.JSON(http.StatusNotFound, gin.H{"status": http.StatusNotFound, "msg": "未找到"})
+		return
+	}
+	c.JSON(http.StatusOK, gin.H{"status": http.StatusOK, "data": todo})
 }
