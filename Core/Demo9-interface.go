@@ -53,5 +53,5 @@ func case2() {
 
 func main() {
 	//case1() // nil判断
-	case2() // 接口定义与实现示例
+	//case2() // 接口定义与实现示例
 }
