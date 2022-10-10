@@ -3,8 +3,8 @@ package main
 import "fmt"
 import "github.com/tealeg/xlsx/v3"
 
-// https://github.com/tealeg/xlsx/blob/master/tutorial/tutorial.adoc#getting-started
-// Doing
+// https://github.com/tealeg/xlsx/blob/master/tutorial/tutorial.adoc#getting-started   // 已经不在维护了
+// 考虑使用：https://github.com/qax-os/excelize
 func main() {
 	wb, err := xlsx.OpenFile("C:\\Users\\HNK7WC3\\Downloads\\samplefile.xlsx")
 	if err != nil {
