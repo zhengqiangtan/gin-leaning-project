@@ -31,8 +31,8 @@ func main() {
 	m["app"] = "wps"
 	m["feedback_type"] = "auto"
 	m["question_type"] = "uninstall"
-	m["question_type"] = "uninstall"
-	m["content"] = "test content"
+	m["level"] = "8"
+	m["content"] = "test content 123"
 
 	var arr = make([]interface{}, 0, 10)
 	n := make(map[string]interface{}, 5)

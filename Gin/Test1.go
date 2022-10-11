@@ -18,13 +18,16 @@ func main() {
 		c.String(200, "Hello, Gin")
 	})
 
-	// curl http://localhost:9999/
-
 	// case2:动态的路由
 	r.GET("/user/:name", func(c *gin.Context) {
 		name := c.Param("name")
 		c.String(http.StatusOK, "Hello %s", name)
 	})
+
+	//r.GET("/user/:age", func(c *gin.Context) {
+	//	name := c.Param("age")
+	//	c.String(http.StatusOK, "age is %s", name)
+	//})
 
 	// case3:获取query参数，匹配users?name=xxx&role=xxx，role可选
 	r.GET("/users", func(c *gin.Context) {

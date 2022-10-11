@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"strings"
 )
@@ -13,6 +14,16 @@ func checkContainSubstrings(str string, subs ...string) bool {
 		}
 	}
 	return isCompleteMatch
+}
+
+func regexFuc() {
+	var arr = make([]string, 5)
+	arr = append(arr, "aa", "bb", "cc")
+
+	var str = "aa"
+	s := strings.Replace(str, ";", "|", -1)
+	fmt.Println(s)
+
 }
 
 func main() {
@@ -34,5 +45,7 @@ func main() {
 		ct = split[0]
 	}
 	log.Println(ct)
+
+	regexFuc()
 
 }
