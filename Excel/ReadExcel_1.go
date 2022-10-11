@@ -1,7 +1,7 @@
 package main
 
 import "fmt"
-import "github.com/tealeg/xlsx/v3"
+import "github.com/tealeg/xlsx/v3" // v3版本
 
 // https://github.com/tealeg/xlsx/blob/master/tutorial/tutorial.adoc#getting-started   // 已经不在维护了
 // 考虑使用：https://github.com/qax-os/excelize

@@ -11,6 +11,8 @@ require (
 	github.com/k3a/html2text v1.0.8
 	github.com/smartystreets/goconvey v1.7.2
 	github.com/stretchr/testify v1.8.0
+	github.com/tealeg/xlsx v1.0.5
+	github.com/tealeg/xlsx/v2 v2.0.1
 	github.com/tealeg/xlsx/v3 v3.2.4
 	github.com/xuri/excelize/v2 v2.6.1
 	github.com/zeromicro/go-zero v1.4.1

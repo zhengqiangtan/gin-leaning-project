@@ -11,13 +11,30 @@ func main() {
 	//println("------------------------------")
 	//mutableArray()
 
-	title := []string{"反馈日期 ", "ID ", "业务 ", "反馈方式 ", "邮箱 ", "反馈内容（原文） ", "反馈内容（英文） ", "反馈内容（中文） ",
-		"新增类型 ", "模块 ", "问题属性 ", "问题描述 ", "场景 ", "备注 ", "版本号 ", "UID ", "License状态 ", "用户类型 ", "自定义字段", "语言 ", "问题标签 ", "device_id ",
-		"区域 ", "评分 ", "设备制造商 ", "设备型号 ", "操作系统 ", "屏幕尺寸 ", "主题 ", "系统版本 ", "渠道号 ", "设备", "来源", "体验一级", "体验二级", "体验三级",
-	}
+	//var list = make([]FeedbackReplyModelDto,1, 1)
+	//var list = make([]FeedbackReplyModelDto,0, 1)
+	var list []FeedbackReplyModelDto
 
-	println(len(title))
+	// db select ...
+	list = append(list, FeedbackReplyModelDto{
+		Id:           "10",
+		App:          "android",
+		Modular:      "pub",
+		QuestionDesc: "test",
+		ContentEn:    "this is a test",
+		ContentCn:    "这是个测试",
+	})
+	fmt.Println(len(list))
 
+}
+
+type FeedbackReplyModelDto struct {
+	Id           string `json:"id"`
+	App          string `json:"app"`
+	Modular      string `json:"modular"`
+	QuestionDesc string `json:"question_desc"`
+	ContentEn    string `json:"content_en"`
+	ContentCn    string `json:"content_cn"`
 }
 
 //new(T) 和 make(T,args) 是 Go 语言内建函数，用来分配内存，但适用的类型不同。

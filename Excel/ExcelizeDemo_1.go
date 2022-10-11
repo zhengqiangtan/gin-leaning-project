@@ -31,13 +31,15 @@ func main() {
 		fmt.Println(err)
 		return
 	}
+
 	for i, row := range rows {
+		var str []string
 		for _, colCell := range row {
-			fmt.Print(colCell, "\t")
+			str = append(str, colCell)
 		}
 		if i == 2 {
 			break
 		}
-		fmt.Println()
+		fmt.Println(str)
 	}
 }
