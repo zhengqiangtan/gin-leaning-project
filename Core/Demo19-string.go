@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"log"
+	"github.com/wxnacy/wgo/arrays"
 	"strings"
 )
 
@@ -26,26 +26,15 @@ func regexFuc() {
 
 }
 
+func stringContains() {
+	sa := []string{"q", "w", "e", "r", "t"}
+
+	bol := arrays.ContainsString(sa, "t1")
+	fmt.Println(bol)
+}
+
 func main() {
-
-	//bol := checkContainSubstrings("It's from my iPhone.", "It's from my iPhone", "Sent from my iPad Pro")
-	//print(bol)
-	//contains := strings.Contains("Kirimkan Dokumen Masalah", "Kirimkan Dokumen Masalah")
-	//println(contains)
-
-	str := "image/jpeg; name=\"image1.jpeg\""
-
-	index := strings.Index(str, "\"")
-
-	log.Println(index, " ", str[index+1:len(str)-1])
-
-	var ct = ""
-	split := strings.Split(str, ";")
-	if len(split) > 1 {
-		ct = split[0]
-	}
-	log.Println(ct)
-
-	regexFuc()
+	//regexFuc()
+	stringContains() //字符串在数组中包含判断
 
 }

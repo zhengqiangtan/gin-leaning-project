@@ -8,7 +8,7 @@ import (
 // github.com/xuri/excelize
 // docs: https://xuri.me/excelize/zh-hans/
 func main() {
-	f, err := excelize.OpenFile("C:\\Users\\HNK7WC3\\Downloads\\反馈系统（标注项）-PC.xlsx")
+	f, err := excelize.OpenFile("C:\\Users\\HNK7WC3\\Downloads\\Feedback_221011180332.xlsx")
 	if err != nil {
 		fmt.Println(err)
 		return
@@ -26,10 +26,18 @@ func main() {
 	//}
 	//fmt.Println(cell)
 	// 获取 Sheet1 上所有单元格
-	rows, err := f.GetRows("UWP版")
+	rows, err := f.GetRows("Sheet1")
 	if err != nil {
 		fmt.Println(err)
 		return
+	}
+	display, tooltip := "https://github.com/xuri/excelize", "Excelize on GitHub"
+	if err := f.SetCellHyperLink("Sheet1", "B2",
+		"https://github.com/xuri/excelize", "External", excelize.HyperlinkOpts{
+			Display: &display,
+			Tooltip: &tooltip,
+		}); err != nil {
+		fmt.Println(err)
 	}
 
 	for i, row := range rows {
@@ -42,4 +50,5 @@ func main() {
 		}
 		fmt.Println(str)
 	}
+	f.Save()
 }

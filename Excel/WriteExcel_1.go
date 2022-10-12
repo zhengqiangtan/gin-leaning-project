@@ -4,7 +4,8 @@ import (
 	"fmt"
 	"gin-leaning-project/globals"
 	"github.com/gin-gonic/gin"
-	"github.com/tealeg/xlsx"
+	"github.com/tealeg/xlsx/v3"
+	"github.com/wxnacy/wgo/arrays"
 	"log"
 	"net/http"
 	"time"
@@ -67,29 +68,59 @@ func GetReplyTable() (error, []FeedbackReplyModelDto) {
 		ContentEn:    "this is a test",
 		ContentCn:    "这是个测试",
 	})
+	list = append(list, FeedbackReplyModelDto{
+		Id:           "11",
+		App:          "ios",
+		Modular:      "pub",
+		QuestionDesc: "test",
+		ContentEn:    "taa",
+		ContentCn:    "fdsf",
+	})
 
 	return nil, list
 }
 
 func ExportFeedbackReplyExcel(fbs []FeedbackReplyModelDto, c *gin.Context) {
 	file := xlsx.NewFile()
+
 	sheet, _ := file.AddSheet("Sheet1")
+	sheet.SetColWidth(3, 10, 12.5)
+
 	title := []string{"app", "modular", "question_desc", "content_en", "content_cn"}
 	titleRow2 := sheet.AddRow()
+
+	myStyle := xlsx.NewStyle()
+	myStyle.Alignment.Horizontal = "center"
+	myStyle.Fill.FgColor = "FFFFFF00"
+	myStyle.Fill.PatternType = "solid"
+	myStyle.Font.Name = "Georgia"
+	myStyle.Font.Size = 13
+
+	myStyle.Font.Bold = true
+	myStyle.ApplyAlignment = true
+	myStyle.ApplyFill = true
+	myStyle.ApplyFont = true
+
 	for _, title := range title {
 		cell := titleRow2.AddCell()
 		cell.Value = title
-		//居中显示
-		cell.GetStyle().Alignment.Horizontal = "center"
-		cell.GetStyle().Alignment.Vertical = "center"
-		cell.GetStyle().Font.Bold = true
+		cell.SetStyle(myStyle)
 	}
+	//测试动态添加表格
+	colsEn := []string{"created_at", "feedback_id"}
 	for _, fb := range fbs {
 		row := sheet.AddRow()
-		cell1 := row.AddCell()
-		cell1.Value = fb.App
-		cell2 := row.AddCell()
-		cell2.Value = fb.Modular
+		if arrays.ContainsString(colsEn, "created_at") > 0 {
+			cell := row.AddCell()
+			cell.Value = fb.App
+		}
+		if arrays.ContainsString(colsEn, "feedback_id") > 0 {
+			cel := row.AddCell()
+			cel.Value = fb.Modular
+			cel.SetHyperlink("https://feedback-admin.4wps.net/", fb.App, "")
+			cel.GetStyle().Font.Color = "0B33F4"
+
+		}
 		cell3 := row.AddCell()
 		cell3.Value = fb.QuestionDesc
 		cell4 := row.AddCell()
