@@ -7,6 +7,7 @@ require (
 	github.com/emersion/go-imap v1.2.1
 	github.com/emersion/go-message v0.15.0
 	github.com/gin-gonic/gin v1.8.1
+	github.com/go-playground/validator/v10 v10.10.0
 	github.com/go-sql-driver/mysql v1.6.0
 	github.com/k3a/html2text v1.0.8
 	github.com/smartystreets/goconvey v1.7.2
@@ -16,6 +17,7 @@ require (
 	github.com/wxnacy/wgo v1.0.4
 	github.com/xuri/excelize/v2 v2.6.1
 	github.com/zeromicro/go-zero v1.4.1
+	golang.org/x/sync v0.0.0-20220601150217-0de741cfad7f
 	gorm.io/driver/mysql v1.3.5
 	gorm.io/gorm v1.23.8
 )
@@ -35,7 +37,6 @@ require (
 	github.com/go-logr/stdr v1.2.2 // indirect
 	github.com/go-playground/locales v0.14.0 // indirect
 	github.com/go-playground/universal-translator v0.18.0 // indirect
-	github.com/go-playground/validator/v10 v10.10.0 // indirect
 	github.com/go-redis/redis/v8 v8.11.5 // indirect
 	github.com/goccy/go-json v0.9.7 // indirect
 	github.com/golang/protobuf v1.5.2 // indirect

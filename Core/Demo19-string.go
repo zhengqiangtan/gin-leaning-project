@@ -27,9 +27,9 @@ func regexFuc() {
 }
 
 func stringContains() {
-	sa := []string{"q", "w", "e", "r", "t"}
+	sa := []string{"created_at", "feedback_id", "content", "r", "t"}
 
-	bol := arrays.ContainsString(sa, "t1")
+	bol := arrays.ContainsString(sa, "created_at") // 0
 	fmt.Println(bol)
 }
 
