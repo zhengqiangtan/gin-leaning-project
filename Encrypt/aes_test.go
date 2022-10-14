@@ -9,7 +9,7 @@ func TestEncryptAES(t *testing.T) {
 	// cipher key
 	key := "thisis32bitlongpassphraseimusing" // 32位秘钥
 	// plaintext
-	pt := "This is a secret"
+	pt := "This is a secret "
 	c := EncryptAES([]byte(key), pt)
 	// plaintext
 	fmt.Println(pt)
