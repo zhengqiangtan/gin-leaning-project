@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+)
 
 /**
  Golang init函数释义：
@@ -19,12 +22,22 @@ func hello() []string {
 	return nil
 }
 
-func main() {
-
+func test_hello() {
 	h := hello()
 	if h == nil {
 		fmt.Println("nil")
 	} else {
 		fmt.Println("not nil")
 	}
+}
+
+func main() {
+
+	uint64_test()
+}
+
+func uint64_test() {
+	i := uint64(123)
+	s := strconv.FormatUint(i, 10)
+	fmt.Println(i, s)
 }
