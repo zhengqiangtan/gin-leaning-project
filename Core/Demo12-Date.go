@@ -2,15 +2,13 @@ package main
 
 import (
 	"fmt"
-	"strings"
 	"time"
 )
 
 func main() {
 	t := time.Now() // 获取当前时间
 
-	strings.
-		fmt.Printf("当前时间:%v\n", t)
+	fmt.Printf("当前时间:%v\n", t)
 	fmt.Println("年", t.Year())
 	fmt.Println("月", t.Month())
 	fmt.Println("日", t.Day())

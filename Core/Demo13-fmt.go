@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"strconv"
 )
 
 type student struct {
@@ -39,3 +40,18 @@ func main() {
 //a=&{zhangsan 1}
 //a=&{name:zhangsan id:1}
 //a=&main.student{name:"zhangsan", id:1}
+
+func case1_strconv_1() {
+	strInt := "100"
+	parseBool, err2 := strconv.ParseBool("1")
+	fmt.Println(parseBool, err2)
+
+	num, err := strconv.Atoi(strInt)
+	if err != nil {
+		fmt.Println("can't convert to int", err)
+		return
+	}
+	fmt.Printf("type:%T\nvalue:%#v\n", num, num)
+	// type:int
+	// value:100
+}
