@@ -32,7 +32,7 @@ func test_hello() {
 }
 
 func main() {
-
+	test_hello()
 	uint64_test()
 }
 
