@@ -27,6 +27,6 @@ func main() {
 	println("num:", runtime.NumGoroutine()) // 1
 
 	for v := range ci {
-		fmt.Println(v)
+		fmt.Println(v) //通道关闭了依然可以读取
 	}
 }

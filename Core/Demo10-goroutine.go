@@ -34,10 +34,10 @@ func Consumer(queue <-chan int) {
 Goroutine 和 channel 共同使用
 */
 func main() {
-	go hi()
-	time.Sleep(1 * time.Second) // Go 主协程休眠了 1 秒
+	//go hi()
+	//time.Sleep(1 * time.Second) // Go 主协程休眠了 1 秒
 
-	queue := make(chan int, 88)
+	queue := make(chan int, 5)
 	go Producer(queue)
 	go Consumer(queue)
 	time.Sleep(1 * time.Second) // Go 主协程休眠了 1 秒, 让协程有机会运行
