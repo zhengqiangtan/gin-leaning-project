@@ -12,6 +12,7 @@ require (
 	github.com/go-playground/validator/v10 v10.10.0
 	github.com/go-redis/redis v6.15.9+incompatible
 	github.com/go-sql-driver/mysql v1.6.0
+	github.com/jinzhu/now v1.1.5
 	github.com/k3a/html2text v1.0.8
 	github.com/smartystreets/goconvey v1.7.2
 	github.com/stretchr/testify v1.8.0
@@ -19,6 +20,7 @@ require (
 	github.com/tealeg/xlsx/v3 v3.2.4
 	github.com/wxnacy/wgo v1.0.4
 	github.com/xuri/excelize/v2 v2.6.1
+	go.uber.org/goleak v1.2.0
 	golang.org/x/sync v0.0.0-20220601150217-0de741cfad7f
 	gorm.io/driver/mysql v1.3.5
 	gorm.io/gorm v1.23.8
@@ -40,7 +42,6 @@ require (
 	github.com/google/go-querystring v1.0.0 // indirect
 	github.com/gopherjs/gopherjs v0.0.0-20181017120253-0766667cb4d1 // indirect
 	github.com/jinzhu/inflection v1.0.0 // indirect
-	github.com/jinzhu/now v1.1.5 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/jtolds/gls v4.20.0+incompatible // indirect
 	github.com/kr/pretty v0.3.0 // indirect
