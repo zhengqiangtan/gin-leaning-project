@@ -1,0 +1,63 @@
+
+//// 接受验证码参数struct
+//type VerifyCodeParams struct {
+//	Uid         int    `json:"uid"`
+//	CountryCode string `form:"country_code" json:"country_code"`
+//	Phone       string `form:"phone" json:"phone"`
+//}
+//
+//// 编写实现Valid方法，对参数结构体各个属性进行合法校验
+//func (t *VerifyCodeParams) Valid(v *validation.Validation) {
+//	if t.Uid <= 0 {
+//		if len(t.CountryCode) < 2 { // 校验CountryCode属性
+//			v.SetError("CountryCode", "国际码不能少于2位")
+//		}
+//		if len(t.Phone) < 11 { // 校验手机号码
+//			v.SetError("Phone", "手机号不能少于11位")
+//		}
+//	}
+//}
+//
+//
+//// ---------- handler -------------------
+//func QueryVerifyCodeHandler(c *gin.Context) {
+//	var form VerifyCodeParams
+//	value, exist := c.Get("uid")
+//	if exist {
+//		uid, ok := value.(int)
+//		if !ok {
+//			app.JsonResponse(c, http.StatusOK, code.ErrorTokenEmpty, nil)
+//			return
+//		}
+//		form.Uid = uid
+//	}
+//
+//	var err error
+//
+//	// 绑定参数 & 校验参数
+//	err = BindAndValid(c, &form)
+//	if err != nil {
+//		app.JsonResponse(c, http.StatusOK, code.InvalidParams, err.Error())
+//		return
+//	}
+//
+//	retCode, verifyCode := service.GenerateVerifyCode(c, &form)
+//	app.JsonResponse(c, http.StatusOK, retCode, verifyCode)
+//}
+//
+//// 绑定和校验
+//func BindAndValid(c *gin.Context, form interface{}) error {
+//	if err := c.Bind(form); err != nil { //绑定
+//		return err
+//	}
+//	valid := validation.Validation{}
+//	ok, err := valid.Valid(form) // 校验
+//	if err != nil {
+//		return err
+//	}
+//	if !ok {
+//		markErrors(c, valid.Errors)
+//		return buildFormErr(valid.Errors)
+//	}
+//	return nil
+//}

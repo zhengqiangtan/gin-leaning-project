@@ -15,6 +15,7 @@ func TestMain(m *testing.M) {
 }
 
 func TestPoller(t *testing.T) {
+	// 启动服务
 	producer := NewPoller(5)
 	producer.Poll(context.Background())
 }
