@@ -7,7 +7,8 @@ import (
 	"os"
 )
 
-/**
+/*
+*
 gin框架的请求测试
 */
 func main() {
